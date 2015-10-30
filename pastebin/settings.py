@@ -56,8 +56,8 @@ ROOT_URLCONF = 'pastebin.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/home/lisa/dev/py/pastebin/pastebin/templates',
-                 '/home/lisa/dev/py/pastebin/pastebin/templates/pastebin'],
+        'DIRS': ['pastebin/templates',
+                 'pastebin/templates/pastebin'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
