@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
+
+#====================================================================
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from paste.models import Paste
 from paste.forms import AddForm
 
+#====================================================================
 def search(request):
     errors = []
     if 'q' in request.GET:
@@ -18,6 +21,7 @@ def search(request):
 
     return render_to_response('search_form.html', {'errors': errors})
 
+#====================================================================
 def add(request):
     if request.method == 'POST':
         form = AddForm(request.POST)

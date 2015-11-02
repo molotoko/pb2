@@ -3,12 +3,10 @@
 
 {% block content %}
 
-<h1>Paste something</h1>
-{% if form.errors %}
-    <p style="color: red;">Исправьте следующие ошибки: {{ form.errors }}</p>
-{% endif %}
+<h1>Paste something, please</h1>
 
-<form action="" method="POST">{% csrf_token %}
+<form action="" method="POST">
+    {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" name="submit" value="Paste" id="submit">
 </form>

@@ -1,4 +1,6 @@
+# -*- coding: utf-8 -*-
 from django.db import models
+from django.forms import ModelForm
 from django.core.urlresolvers import reverse
 import datetime
 
@@ -27,4 +29,10 @@ class Paste(models.Model):
 
     def get_absolute_url(self):
         return reverse('paste_detail', args=[str(self.id)])
+
+# Создание формы из модели Paste
+class PasteForm(ModelForm):
+    class Meta:
+        model = Paste
+        fields = ['title', 'poster', 'syntax', 'content', 'timestamp']
 

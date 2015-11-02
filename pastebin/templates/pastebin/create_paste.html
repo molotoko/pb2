@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Create paste{% endblock %}
+
+{% block content %}
+
+<h1>Paste something or die</h1>
+<form action="{% url 'paste_new' %}" method="POST">
+      {% csrf_token  %}
+      {{ form.as_p }}
+      <input id="save_paste" type="submit" value="Paste" />
+</form>
+
+<a href="{% url 'paste_list' %}">back to list</a>
+
+{% endblock %}
