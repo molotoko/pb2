@@ -25,7 +25,6 @@ urlpatterns = [
     url(r'^paste/$',                paste_list, name='paste_list'),
     url(r'^(?P<object_id>\d+)/$',   paste_detail, name='paste_detail'),
     url(r'^add/$',                  create_paste),
-    url(r'^paste/add/$',            create_paste),
     url(r'^search/$',               views.search),
     url(r'^new/$',                  pastebin.views.CreatePasteView.as_view(), name='paste_new')
 ]
