@@ -1,14 +1,22 @@
 {% extends "base.html" %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+
 {% block title %}Add{% endblock %}
 
 {% block content %}
 
 <h1>Paste something, please</h1>
 
-<form action="" method="POST">
+<form action="" method="POST" class="form">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" name="submit" value="Paste" id="submit">
+
+
+        <button type="submit" class="btn btn-primary">
+            {% bootstrap_icon "star" %} Paste
+        </button>
+
 </form>
 
 {% endblock %}

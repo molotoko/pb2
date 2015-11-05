@@ -1,20 +1,15 @@
 {% extends "base.html" %}
+
+{% load staticfiles %}
+{% load filters %}
+
 {% block title %}{{ object }}{% endblock %}
+
 {% block content %}
-<h1>{{ object }}</h1>
-<p>Syntax: {{ object.get_syntax_display }}<br>
-Date: {{ object.timestamp|date:"r" }}</p>
-<code><pre name="code" class="{{ object.get_syntax_display|lower }}">
-{{ object.content }}</pre></code>
-<link type="text/css" rel="stylesheet"
-href="/static/css/SyntaxHighlighter.css"></link>
-<script language="javascript" src="/static/js/shCore.js"></script>
-<script language="javascript" src="/static/js/shBrushPython.js"></script>
-<script language="javascript" src=”/static/js/shBrushXml.js"></script>
-<script language="javascript" src="/static/js/shBrushJscript.js"></script>
-<script language="javascript" src="/static/js/shBrushSql.js"></script>
-<script language="javascript" src="/static/js/shBrushCss.js"></script>
-<script language="javascript">
-dp.SyntaxHighlighter.HighlightAll('code');
-</script>
+    <h1>{{ object }}</h1>
+    <p>Syntax: {{ object.get_syntax_display }}<br>
+    Date: {{ object.timestamp|date:"r" }}</p>
+    <link href="/static/css/prism.css" rel="stylesheet" />
+    <script language="javascript" src="/static/js/prism.js"></script>
+    <pre><code class="language-{{ object.get_syntax_display|mapLangName }}">{{ object.content }}</code></pre>
 {% endblock %}
