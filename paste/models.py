@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 #===========================================================
+
 from django.db import models
 from django.forms import ModelForm
 from django.core.urlresolvers import reverse
 import datetime
 
 #===========================================================
+
 class Paste(models.Model):
     SYNTAX_CHOICES = (
         (0, "Plain"),
@@ -16,7 +18,7 @@ class Paste(models.Model):
         (5, "CSS"),
     )
 
-    content = models.TextField()
+    content = models.TextField(blank=True)
     title = models.CharField(blank=True, max_length=30)
     syntax = models.IntegerField(choices=SYNTAX_CHOICES, default = 0)
     poster = models.CharField(blank=True, max_length=30)
@@ -33,10 +35,11 @@ class Paste(models.Model):
         return reverse('paste_detail', args=[str(self.id)])
 
 #===========================================================
+
 # Создание формы из модели Paste
 class PasteForm(ModelForm):
     class Meta:
         model = Paste
-        fields = ['title', 'poster', 'syntax', 'content']
+        fields = ['content', 'title', 'poster', 'syntax']
         exclude = ['timestamp']
 

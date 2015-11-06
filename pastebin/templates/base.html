@@ -1,6 +1,13 @@
 <html>
     <head>
+        {% load staticfiles %}
+        <meta name="description" content="">
+        <meta name="author" content="">
         <title>{% block title %}{% endblock %}</title>
+        <!-- Bootstrap -->
+        <link href="/static/css/bootstrap.min.css" rel="stylesheet" />
+        <!-- Custom styles for this template -->
+        <link href="/static/css/starter-template.css" rel="stylesheet" />
         <style type="text/css">
             body { margin: 30px; font family: sans serif; background: #fff; }
             h1 { background: #ccf; padding: 20px; }
@@ -8,9 +15,30 @@
         </style>
     </head>
     <body>
-        <p><a href="/new/">Add one (class-controller realized)</a> &bull;
-        <a href="/add/">Add one (view-controller realized)</a> &bull;
-        <a href="/paste/">List all</a></p>
-        {% block content %}{% endblock %}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">Pastebin</a>
+          </div>
+
+          <div id="navbar" class="collapse navbar-collapse">
+              <ul class="nav navbar-nav">
+                  <li class="active"><a href="/new/">Add one (class-controller realized)</a></li>
+                  <li><a href="/add/">Add one (view-controller realized)</a></li>
+                  <li><a href="/paste/">List all</a></li>
+              </ul>
+          </div>
+          {% block content %}{% endblock %}
+
+      </div>
+    </nav>
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/static/js/bootstrap.min.js"></script>
     </body>
 </html>

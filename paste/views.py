@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 
 #====================================================================
+
 from django.shortcuts import render_to_response
 from paste.models import Paste
 
 #====================================================================
+
 def search(request):
     errors = []
     if 'q' in request.GET:
