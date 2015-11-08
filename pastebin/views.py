@@ -26,7 +26,7 @@ def paste_detail(request, object_id):
 
 @csrf_exempt
 def create_paste(request):
-    form = PasteForm(request.POST)
+    form = PasteForm()
     if request.method == "POST":
         if form.is_valid():
             form.save()

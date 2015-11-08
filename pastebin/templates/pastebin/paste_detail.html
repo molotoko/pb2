@@ -9,7 +9,5 @@
     <h1>{{ object }}</h1>
     <p>Syntax: {{ object.get_syntax_display }}<br>
     Date: {{ object.timestamp|date:"r" }}</p>
-    <link href="/static/css/prism.css" rel="stylesheet" />
-    <script language="javascript" src="/static/js/prism.js"></script>
     <pre><code class="language-{{ object.get_syntax_display|mapLangName }}">{{ object.content }}</code></pre>
 {% endblock %}

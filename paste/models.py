@@ -18,7 +18,7 @@ class Paste(models.Model):
         (5, "CSS"),
     )
 
-    content = models.TextField(blank=True)
+    content = models.TextField()
     title = models.CharField(blank=True, max_length=30)
     syntax = models.IntegerField(choices=SYNTAX_CHOICES, default = 0)
     poster = models.CharField(blank=True, max_length=30)
@@ -42,4 +42,3 @@ class PasteForm(ModelForm):
         model = Paste
         fields = ['content', 'title', 'poster', 'syntax']
         exclude = ['timestamp']
-

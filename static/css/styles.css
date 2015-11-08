@@ -1,0 +1,16 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.pasteform > p {
+  display: flex;
+}
+
+.pasteform > p > label {
+  width: 10em;
+  flex-shrink: 0;
+}
