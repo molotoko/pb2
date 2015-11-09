@@ -15,16 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from views import paste_list, paste_detail, create_paste
-from paste import views
+from views import paste_list, paste_detail, create_paste, main, search
 import pastebin.views
 
 urlpatterns = [
     url(r'^admin/',                 include(admin.site.urls)),
-    url(r'^$',                      paste_list, name='paste_list'),
+    url(r'^$',                      main, name='main'),
     url(r'^paste/$',                paste_list, name='paste_list'),
     url(r'^(?P<object_id>\d+)/$',   paste_detail, name='paste_detail'),
     url(r'^add/$',                  create_paste),
-    url(r'^search/$',               views.search),
+    url(r'^search/$',               search),
     url(r'^new/$',                  pastebin.views.CreatePasteView.as_view(), name='paste_new')
 ]

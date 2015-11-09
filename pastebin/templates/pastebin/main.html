@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}Create or view paste{% endblock %}
+{% block active-menu %}
+    <li class=><a href="/add/">Create paste</a></li>
+{% endblock %}
+
+{% block content %}
+<h1>Paste something</h1>
+    <form action="" method="POST" class="pasteform">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="fieldWrapper">
+            {{ field.errors }}
+            {{ field.label_tag }} {{ field }}
+        </div>
+        {% endfor %}
+
+            <button type="submit" class="btn btn-default navbar-btn">
+               Paste
+            </button>
+
+    </form>
+{% endblock %}

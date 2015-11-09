@@ -1,22 +1,20 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
-
-{% block title %}Add{% endblock %}
+{% block title %}Create paste{% endblock %}
+{% block active-menu %}
+    <li class="active"><a href="/add/">Create paste</a></li>
+{% endblock %}
 
 {% block content %}
+<h1>Paste something</h1>
+    <form action="" method="POST" class="pasteform">
+        {% csrf_token %}
+        {{ form.as_p }}
 
-<h1>Paste something, please</h1>
+            <button type="submit" class="btn btn-inverse navbar-btn">
+               Paste
+            </button>
 
-<form action="" method="POST" class="pasteform">
-    {% csrf_token %}
-    {{ form.as_p }}
-
-
-        <button type="submit" class="btn btn-primary">
-           Paste
-        </button>
-
-</form>
-
+    </form>
 {% endblock %}
