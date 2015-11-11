@@ -39,9 +39,12 @@
                     <p style="color: red;">{{ error }}</p>
                 {% endfor %}
               {% endif %}
-              <form action="/search/" method="get" class="navbar-form navbar-right" role="search">
-                  <input type="text" name="q">
-                  <input type="submit" value="Search">
+
+              <form action="/search/" method="get" class="navbar-form navbar-right nav-search-form">
+                  <div class="form-group">
+                      <input type="search" name="q" class="form-control nav-search-form__input" placeholder="Type some shit here">
+                  </div>
+                  <button type="submit" class="btn btn-info nav-search-form__submit">Search</button>
               </form>
           </div>
       </div>

@@ -14,3 +14,16 @@ body {
   width: 10em;
   flex-shrink: 0;
 }
+
+.nav-search-form {
+  margin-top: 10px;
+}
+
+  .nav-search-form__input {
+    height: 30px;
+  }
+
+  .nav-search-form__submit {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
