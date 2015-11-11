@@ -21,7 +21,8 @@ def paste_list(request):
 
 def paste_detail(request, object_id):
     object = Paste.objects.get(id=object_id)
-    return render_to_response('paste_detail.html', {'object': object})
+    object_list = Paste.objects.all()
+    return render_to_response('paste_detail.html', {'object': object, 'object_list': object_list})
 
 #====================================================================
 
@@ -77,3 +78,8 @@ def search(request):
             return render_to_response('search_results.html', {'pasts': pasts, 'query': q})
 
     return render_to_response('base.html', {'errors': errors})
+
+#====================================================================
+
+def test(request):
+    return render_to_response('test.html')
