@@ -1,0 +1,10 @@
+<div class="col-md-2 col-md-offset-1">
+      <div class="list-group">
+          <h4>Recently Pasted</h4>
+          <ol class="list-unstyled">
+              {% for object in object_list %}
+                  <li><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
+              {% endfor %}
+          </ol>
+      </div>
+</div>

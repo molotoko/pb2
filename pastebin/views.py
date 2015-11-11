@@ -21,8 +21,7 @@ def paste_list(request):
 
 def paste_detail(request, object_id):
     object = Paste.objects.get(id=object_id)
-    object_list = Paste.objects.all()
-    return render_to_response('paste_detail.html', {'object': object, 'object_list': object_list})
+    return render_to_response('paste_detail.html', {'object': object})
 
 #====================================================================
 
@@ -35,9 +34,8 @@ def create_paste(request):
             return HttpResponseRedirect('/')
     else:
         form = PasteForm()
-    object_list = Paste.objects.all()
 
-    return render_to_response('paste_form.html', {'object_list': object_list, 'form': form})
+    return render_to_response('paste_form.html', {'form': form})
 
 #====================================================================
 
@@ -60,8 +58,7 @@ def main(request):
             return HttpResponseRedirect('/')
     else:
         form = PasteForm()
-    object_list = Paste.objects.all()
-    return render_to_response('main.html', {'object_list': object_list, 'form': form})
+    return render_to_response('main.html', {'form': form})
 
 #====================================================================
 
@@ -78,8 +75,3 @@ def search(request):
             return render_to_response('search_results.html', {'pasts': pasts, 'query': q})
 
     return render_to_response('base.html', {'errors': errors})
-
-#====================================================================
-
-def test(request):
-    return render_to_response('test.html')

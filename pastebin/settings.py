@@ -55,7 +55,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': ['pastebin/templates',
-                 'pastebin/templates/pastebin'],
+                 'pastebin/templates/pastebin',
+                 'pastebin/templates/pastebin/includes',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -78,7 +79,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'db_pastebin',
-        'USER': 'admin',
+        'USER': 'lisa',
         'PASSWORD': 'lisapwd',
         'HOST': 'localhost',
         'PORT': '',

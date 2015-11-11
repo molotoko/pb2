@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from views import paste_list, paste_detail, create_paste, main, search, test
+from views import paste_list, paste_detail, create_paste, main, search
 import pastebin.views
 
 
@@ -26,6 +26,5 @@ urlpatterns = [
     url(r'^(?P<object_id>\d+)/$',   paste_detail, name='paste_detail'),
     url(r'^add/$',                  create_paste),
     url(r'^search/$',               search),
-    url(r'^test/$',                 test),
     url(r'^new/$',                  pastebin.views.CreatePasteView.as_view(), name='paste_new')
 ]

@@ -1,6 +1,7 @@
 <html>
     <head>
         {% load staticfiles %}
+        {% load tags %}
         <meta name="description" content="">
         <meta name="author" content="">
         <title>{% block title %}{% endblock %}</title>
@@ -38,7 +39,7 @@
                     <p style="color: red;">{{ error }}</p>
                 {% endfor %}
               {% endif %}
-              <form action="" method="get" class="navbar-form navbar-right" role="search">
+              <form action="/search/" method="get" class="navbar-form navbar-right" role="search">
                   <input type="text" name="q">
                   <input type="submit" value="Search">
               </form>
@@ -50,16 +51,8 @@
         <div class="col-md-9">
             {% block content %}{% endblock %}
         </div>
-        <div class="col-md-2 col-md-offset-1">
-              <div class="list-group">
-                  <h4>Recently Pasted</h4>
-                  <ol class="list-unstyled">
-                      {% for object in object_list %}
-                          <li><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
-                      {% endfor %}
-                  </ol>
-              </div>
-        </div>
+
+        {% sidebar %}
     </div>
 
 
