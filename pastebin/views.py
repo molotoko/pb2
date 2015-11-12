@@ -67,9 +67,9 @@ def search(request):
     if 'q' in request.GET:
         q = request.GET['q']
         if not q:
-            errors.append('Введите поисковый запрос.')
+            errors.append('Insert something.')
         elif len(q) > 20:
-            errors.append('Введите не более 20 символов.')
+            errors.append('Insert something up to 20 symbols.')
         else:
             pasts = Paste.objects.filter(title__icontains=q)
             return render_to_response('search_results.html', {'pasts': pasts, 'query': q})

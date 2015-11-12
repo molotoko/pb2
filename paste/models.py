@@ -5,6 +5,7 @@ from django.db import models
 from django import forms
 from django.core.urlresolvers import reverse
 import datetime
+import uuid
 
 #===========================================================
 
@@ -33,6 +34,7 @@ class Paste(models.Model):
     poster = models.CharField(blank=True, max_length=30)
     expiration = models.IntegerField(choices=EXPIRATION_CHOICES, default = 0)
     timestamp = models.DateTimeField(default=datetime.datetime.now, blank=True)
+    #uu_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     class Meta:
         ordering = ['-timestamp']
