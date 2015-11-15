@@ -9,6 +9,9 @@ from paste.models import Paste, PasteForm
 from django.views.generic import CreateView
 from django.core.urlresolvers import reverse
 from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import get_object_or_404
+from django.http import Http404
+import re
 
 #====================================================================
 
@@ -20,7 +23,12 @@ def paste_list(request):
 #====================================================================
 
 def paste_detail(request, object_id):
-    object = Paste.objects.get(id=object_id)
+    if re.match(r'^\d+$', object_id):
+        object = get_object_or_404(Paste, id=object_id)
+        if object.exposure == 1:
+            raise Http404("Nothing found")
+    else:
+        object = get_object_or_404(Paste, uu_id=object_id)
     return render_to_response('paste_detail.html', {'object': object})
 
 #====================================================================
@@ -54,8 +62,12 @@ def main(request):
     if request.method == "POST":
         form = PasteForm(request.POST)
         if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/')
+            paste = form.save()
+            if paste.exposure == 1:
+                url = reverse('paste_detail', args=[str(paste.uu_id)])
+            else:
+                url = reverse('paste_detail', args=[str(paste.id)])
+            return HttpResponseRedirect(url)
     else:
         form = PasteForm()
     return render_to_response('main.html', {'form': form})

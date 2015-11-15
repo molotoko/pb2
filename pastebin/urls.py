@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'^admin/',                 include(admin.site.urls)),
     url(r'^$',                      main, name='main'),
     url(r'^paste/$',                paste_list, name='paste_list'),
-    url(r'^(?P<object_id>\d+)/$',   paste_detail, name='paste_detail'),
+    url(r'^([0-9a-z-]+)/$',         paste_detail, name='paste_detail'),
     url(r'^add/$',                  create_paste),
     url(r'^search/$',               search),
     url(r'^new/$',                  pastebin.views.CreatePasteView.as_view(), name='paste_new')

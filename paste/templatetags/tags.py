@@ -12,4 +12,4 @@ def render_sample(template='default.html'):
 
 @register.inclusion_tag('sidebar.html')
 def sidebar():
-    return {'object_list': Paste.objects.all()}
+    return {'object_list': Paste.objects.exclude(exposure=1)}

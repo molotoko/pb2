@@ -27,14 +27,20 @@ class Paste(models.Model):
         (5, "2 Weeks"),
         (6, "1 Month"),
     )
+    EXPOSURE_CHOICES = (
+        (0, "Public"),
+        (1, "Unlisted"),
+        (2, "Private"),
+    )
 
     content = models.TextField()
     title = models.CharField(blank=True, max_length=30)
     syntax = models.IntegerField(choices=SYNTAX_CHOICES, default = 0)
     poster = models.CharField(blank=True, max_length=30)
     expiration = models.IntegerField(choices=EXPIRATION_CHOICES, default = 0)
+    exposure = models.IntegerField(choices=EXPOSURE_CHOICES, default = 0)
     timestamp = models.DateTimeField(default=datetime.datetime.now, blank=True)
-    #uu_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    uu_id = models.UUIDField(primary_key=False, default=uuid.uuid4, editable=False)
 
     class Meta:
         ordering = ['-timestamp']
@@ -43,7 +49,12 @@ class Paste(models.Model):
         return '[%s] "%s"' % (self.SYNTAX_CHOICES[self.syntax][1], self.title)
 
     def get_absolute_url(self):
-        return reverse('paste_detail', args=[str(self.id)])
+        if self.exposure == 1:
+            id = self.uu_id
+        else:
+            id = self.id
+
+        return reverse('paste_detail', args=[str(id)])
 
 #===========================================================
 
@@ -51,7 +62,7 @@ class Paste(models.Model):
 class PasteForm(forms.ModelForm):
     class Meta:
         model = Paste
-        fields = ['content', 'title', 'poster', 'syntax', 'expiration']
+        fields = ['content', 'title', 'poster', 'syntax', 'expiration', 'exposure']
         exclude = ['timestamp']
         widgets = {
           'content': forms.Textarea(attrs={'rows':15, 'cols':100}),
