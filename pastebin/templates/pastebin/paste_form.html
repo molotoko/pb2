@@ -11,10 +11,8 @@
     <form action="" method="POST" class="pasteform">
         {% csrf_token %}
         {{ form.as_p }}
-
             <button type="submit" class="btn btn-inverse navbar-btn">
                Paste
             </button>
-
     </form>
 {% endblock %}

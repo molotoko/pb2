@@ -6,7 +6,6 @@ __author__ = 'lisa'
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from paste.models import Paste, PasteForm
-from django.views.generic import CreateView
 from django.core.urlresolvers import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404
@@ -38,22 +37,15 @@ def create_paste(request):
     if request.method == "POST":
         form = PasteForm(request.POST)
         if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/')
+            paste = form.save()
+            if paste.exposure == 1:
+                url = reverse('paste_detail', args=[str(paste.uu_id)])
+            else:
+                url = reverse('paste_detail', args=[str(paste.id)])
+            return HttpResponseRedirect(url)
     else:
         form = PasteForm()
-
     return render_to_response('paste_form.html', {'form': form})
-
-#====================================================================
-
-class CreatePasteView(CreateView):
-    model = Paste
-    template_name = 'create_paste.html'
-    fields = ['title', 'poster', 'syntax', 'content', 'timestamp']
-
-    def get_success_url(self):
-        return reverse('paste_list')
 
 #====================================================================
 

@@ -36,6 +36,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'paste',
     'paste.templatetags',
+    'django.contrib.sites',
+    'registration',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -89,7 +91,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'ru-ru'
+LANGUAGE_CODE = 'ru-RU'
 
 TIME_ZONE = 'Europe/Moscow'
 
@@ -108,3 +110,14 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+# User registration settings
+
+ACCOUNT_ACTIVATION_DAYS = 2
+AUTH_USER_EMAIL_UNIQUE = True
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False
+DEFAULT_FROM_EMAIL = 'info@google.ru'
