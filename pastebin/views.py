@@ -3,11 +3,10 @@ __author__ = 'lisa'
 
 #====================================================================
 
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, render
 from django.http import HttpResponseRedirect
 from paste.models import Paste, PasteForm
 from django.core.urlresolvers import reverse
-from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404
 from django.http import Http404
 import re
@@ -32,7 +31,6 @@ def paste_detail(request, object_id):
 
 #====================================================================
 
-@csrf_exempt
 def create_paste(request):
     if request.method == "POST":
         form = PasteForm(request.POST)
@@ -45,11 +43,10 @@ def create_paste(request):
             return HttpResponseRedirect(url)
     else:
         form = PasteForm()
-    return render_to_response('paste_form.html', {'form': form})
+    return render(request, 'paste_form.html', {'form': form})
 
 #====================================================================
 
-@csrf_exempt
 def main(request):
     if request.method == "POST":
         form = PasteForm(request.POST)
@@ -62,7 +59,7 @@ def main(request):
             return HttpResponseRedirect(url)
     else:
         form = PasteForm()
-    return render_to_response('main.html', {'form': form})
+    return render(request, 'main.html', {'form': form})
 
 #====================================================================
 

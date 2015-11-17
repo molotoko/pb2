@@ -24,8 +24,9 @@ urlpatterns = [
     url(r'^paste/$',                paste_list, name='paste_list'),
     url(r'^add/$',                  create_paste, name='create_paste'),
     url(r'^search/$',               search),
-    url(r'^register/$', 'registration.views.register', {'form': RegistrationFormUniqueEmail}, name='registration_register'),
-    url(r'^accounts/$'),            include('registration.urls'),
+    #url(r'^register/$', 'registration.views.register', {'form': RegistrationFormUniqueEmail}, name='registration_register'),
+    #url(r'^accounts/$'),            include('registration.urls'),
+    url(r'^accounts/',              include('registration.backends.simple.urls')),
     url(r'^([0-9a-z-]+)/$',         paste_detail, name='paste_detail'),
 
 ]
